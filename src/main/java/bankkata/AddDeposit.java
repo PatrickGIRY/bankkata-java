@@ -1,6 +1,5 @@
 package bankkata;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 @FunctionalInterface
