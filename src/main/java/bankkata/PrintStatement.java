@@ -14,7 +14,7 @@ public interface PrintStatement extends Consumer<List<Transaction>> {
     String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
     DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.00", decimalFormatSymbols());
 
-    static DecimalFormatSymbols decimalFormatSymbols() {
+    private static DecimalFormatSymbols decimalFormatSymbols() {
         final DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols(Locale.getDefault());
         decimalFormatSymbols.setDecimalSeparator('.');
         return decimalFormatSymbols;
