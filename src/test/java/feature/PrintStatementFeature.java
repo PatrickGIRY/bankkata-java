@@ -13,14 +13,14 @@ public class PrintStatementFeature {
 
     private final List<String> printedLines = new ArrayList<>();
     private int dateIndex = 0;
-    private static final String [] DATES = {"01/04/2014", "02/04/2014", "10/04/2014"};
+    private static final String[] DATES = {"01/04/2014", "02/04/2014", "10/04/2014"};
 
     private Account account;
 
     @BeforeEach
     void setUp() {
-        final var  memoryTransationsStore = new ArrayList<Transaction>();
-        final TodayAsString  todayAsString = () -> DATES[dateIndex++];
+        final var memoryTransationsStore = new ArrayList<Transaction>();
+        final TodayAsString todayAsString = () -> DATES[dateIndex++];
         final var addADeposit = AddDeposit.create(todayAsString, memoryTransationsStore::add);
         final var addWithdrawal = AddWithdrawal.create(todayAsString, memoryTransationsStore::add);
         final var allTransactions = AllTransactions.create(memoryTransationsStore);
