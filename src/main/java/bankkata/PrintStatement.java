@@ -24,12 +24,16 @@ public interface PrintStatement extends Consumer<List<Transaction>> {
 
         return transactions -> {
             printLine.accept(STATEMENT_HEADER);
-            final AtomicInteger newRunningBalance = new AtomicInteger(0);
-            transactions.stream()
-                    .map(transaction -> statementLine(transaction, newRunningBalance))
-                    .sorted(Comparator.reverseOrder())
-                    .forEach(printLine);
+            printStatementLines(printLine, transactions);
         };
+    }
+
+    private static void printStatementLines(PrintLine printLine, List<Transaction> transactions) {
+        final AtomicInteger newRunningBalance = new AtomicInteger(0);
+        transactions.stream()
+                .map(transaction -> statementLine(transaction, newRunningBalance))
+                .sorted(Comparator.reverseOrder())
+                .forEach(printLine);
     }
 
     private static String statementLine(Transaction transaction,
